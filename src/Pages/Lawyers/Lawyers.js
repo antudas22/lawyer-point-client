@@ -1,5 +1,11 @@
 import React from "react";
 import './Lawyers.css';
+import{Swiper, SwiperSlide} from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
+import {EffectCoverflow, Navigation} from 'swiper';
+
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import harryPotter from '../../assets/Lawyers-img/harry-potter.jpg'
 import andreaPiacquadio from '../../assets/Lawyers-img/andrea-piacquadio.jpg';
@@ -15,14 +21,31 @@ const Lawyers = () => {
   return (
     <div className="relative">
       <h2 className="text-3xl font-bold text-center my-14">Meet Our Lawyers</h2>
-        <div className="flex justify-between">
-        <button className="absolute bottom-1/3 bg-base-300 text-4xl p-4 rounded-full" ><FiChevronLeft/></button>
-        <button className="absolute bottom-1/3 right-0 bg-base-300 text-4xl p-4 rounded-full" ><FiChevronRight/></button>
-        </div>
-      <div id="carousel" className="flex justify-center">
+
+        <Swiper
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2.5,
+            }}
+            navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+                clickable: true,
+            }}
+            modules={[EffectCoverflow, Navigation]}
+            className="swiper_container"
+        >
         
+        <SwiperSlide>
         <div>
-            <div className="card w-72 h-96 bg-base-100 shadow-xl m-4">
+            <div className="card w-80 h-[450px] bg-base-100 shadow-lg m-4">
             <figure>
                 <img
                 src={harryPotter}
@@ -40,8 +63,10 @@ const Lawyers = () => {
             </div>
             </div>
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
         <div>
-            <div className="card w-72 h-96 bg-base-100 shadow-xl m-4">
+            <div className="card w-80 h-[450px] bg-base-100 shadow-lg m-4">
             <figure>
                 <img
                 src={andreaPiacquadio}
@@ -59,8 +84,10 @@ const Lawyers = () => {
             </div>
             </div>
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
         <div>
-            <div className="card w-72 h-96 bg-base-100 shadow-xl m-4">
+            <div className="card w-80 h-[450px] bg-base-100 shadow-lg m-4">
             <figure>
                 <img
                 src={julieOcean}
@@ -78,8 +105,10 @@ const Lawyers = () => {
             </div>
             </div>
         </div>
-        {/* <div>
-            <div className="card w-72 h-96 bg-base-100 shadow-xl m-4">
+        </SwiperSlide>
+        <SwiperSlide>
+        <div>
+            <div className="card w-80 h-[450px] bg-base-100 shadow-lg m-4">
             <figure>
                 <img
                 src={buroMillennial}
@@ -97,8 +126,10 @@ const Lawyers = () => {
             </div>
             </div>
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
         <div>
-            <div className="card w-72 h-96 bg-base-100 shadow-xl m-4">
+            <div className="card w-80 h-[450px] bg-base-100 shadow-lg m-4">
             <figure>
                 <img
                 src={dinielleDeVeyra}
@@ -116,8 +147,10 @@ const Lawyers = () => {
             </div>
             </div>
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
         <div>
-            <div className="card w-72 h-96 bg-base-100 shadow-xl m-4">
+            <div className="card w-80 h-[450px] bg-base-100 shadow-lg m-4">
             <figure>
                 <img
                 src={jhonWick}
@@ -135,8 +168,10 @@ const Lawyers = () => {
             </div>
             </div>
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
         <div>
-            <div className="card w-72 h-96 bg-base-100 shadow-xl m-4">
+            <div className="card w-80 h-[450px] bg-base-100 shadow-lg m-4">
             <figure>
                 <img
                 src={teddyJoseph}
@@ -154,8 +189,10 @@ const Lawyers = () => {
             </div>
             </div>
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
         <div>
-            <div className="card w-72 h-96 bg-base-100 shadow-xl m-4">
+            <div className="card w-80 h-[450px] bg-base-100 shadow-lg m-4">
             <figure>
                 <img
                 src={mikeJhon}
@@ -172,9 +209,20 @@ const Lawyers = () => {
                 </div>
             </div>
             </div>
-        </div> */}
+        </div>
+        </SwiperSlide>
 
-      </div>
+        <div className="slider-controler">
+          <div className="swiper-button-prev slider-arrow">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </div>
+          <div className="swiper-button-next slider-arrow">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+          </div>
+
+        </Swiper>
+
     </div>
   );
 };
