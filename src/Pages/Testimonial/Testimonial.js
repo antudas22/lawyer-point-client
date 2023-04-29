@@ -9,7 +9,7 @@ const Testimonial = () => {
       <div className="">
 
       <div className="carousel w-full">
-  <div id="slide1" className="carousel-item justify-center gap-5 relative w-full">
+  <div id="slide1" className="carousel-item justify-center gap-5 relative w-full py-6">
     <div className="w-[500px] p-6 shadow-xl rounded-lg">
         <div className="flex items-center gap-5">
           <div className="avatar">
@@ -55,7 +55,7 @@ const Testimonial = () => {
       <a href="#slide2" className="bg-base-300 text-2xl p-2">❯</a>
     </div>
   </div> 
-  <div id="slide2" className="carousel-item justify-center gap-5 relative w-full">
+  <div id="slide2" className="carousel-item justify-center gap-5 relative w-full py-6">
   <div className="w-[500px] p-6 shadow-xl rounded-lg">
         <div className="flex items-center gap-5">
           <div className="avatar">
