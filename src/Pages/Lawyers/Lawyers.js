@@ -5,8 +5,6 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import {EffectCoverflow, Navigation} from 'swiper';
-
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import harryPotter from '../../assets/Lawyers-img/harry-potter.jpg'
 import andreaPiacquadio from '../../assets/Lawyers-img/andrea-piacquadio.jpg';
 import julieOcean from '../../assets/Lawyers-img/julie-ocean.jpg';
