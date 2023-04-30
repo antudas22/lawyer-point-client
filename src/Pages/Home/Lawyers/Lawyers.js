@@ -5,14 +5,14 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import {EffectCoverflow, Navigation} from 'swiper';
-import harryPotter from '../../assets/Lawyers-img/harry-potter.jpg'
-import andreaPiacquadio from '../../assets/Lawyers-img/andrea-piacquadio.jpg';
-import julieOcean from '../../assets/Lawyers-img/julie-ocean.jpg';
-import buroMillennial from '../../assets/Lawyers-img/buro-millennial.jpg';
-import dinielleDeVeyra from '../../assets/Lawyers-img/dinielle-de-veyra.jpg';
-import jhonWick from '../../assets/Lawyers-img/jhon-wick.jpg';
-import teddyJoseph from '../../assets/Lawyers-img/teddy-joseph.jpg';
-import mikeJhon from '../../assets/Lawyers-img/mike-jhon.jpg';
+import harryPotter from '../../../assets/Lawyers-img/harry-potter.jpg'
+import andreaPiacquadio from '../../../assets/Lawyers-img/andrea-piacquadio.jpg';
+import julieOcean from '../../../assets/Lawyers-img/julie-ocean.jpg';
+import buroMillennial from '../../../assets/Lawyers-img/buro-millennial.jpg';
+import dinielleDeVeyra from '../../../assets/Lawyers-img/dinielle-de-veyra.jpg';
+import jhonWick from '../../../assets/Lawyers-img/jhon-wick.jpg';
+import teddyJoseph from '../../../assets/Lawyers-img/teddy-joseph.jpg';
+import mikeJhon from '../../../assets/Lawyers-img/mike-jhon.jpg';
 
 const Lawyers = () => {
 

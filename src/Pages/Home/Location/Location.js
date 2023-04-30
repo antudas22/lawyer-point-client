@@ -30,7 +30,7 @@ function Location() {
         <></>
       </GoogleMap>
     </LoadScript>
-    <div className='w-1/3'>
+    <div className='w-1/2'>
       <h1 className="text-5xl font-bold">Check the location to get us.</h1>
       <p className="py-6">Click the pointer to get more information about our office and details of it's location.</p>
     </div>
