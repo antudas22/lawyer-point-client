@@ -7,7 +7,7 @@ const ContactUs = () => {
     const sendEmail = (e) => {
         e.preventDefault();
     
-        emailjs.sendForm('service_1c3d6se', 'template_ht11nhe', e.target, '28IPHd1E_lqeeeU0Q')
+        emailjs.sendForm(`${process.env.REACT_APP_SERVICE_ID}`, `${process.env.REACT_APP_TEMPLATE_ID}`, e.target, `${process.env.REACT_APP_PUBLIC_KEY}`)
           .then((result) => {
             console.log(result)
               if(result.status === 200){
@@ -23,7 +23,7 @@ const ContactUs = () => {
         <div>
              <div className='mb-0'>
             <div className='flex justify-center'>
-            <h2 className="text-3xl font-bold text-center my-14">Contact Us</h2>
+            <h2 className="text-3xl font-bold text-center my-10">Get in touch</h2>
                 </div>
             <div className='flex justify-center p-10'>
             <form onSubmit={sendEmail} className="card flex-shrink-0 w-full max-w-lg shadow-2xl">
