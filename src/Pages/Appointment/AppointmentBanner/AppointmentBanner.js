@@ -1,13 +1,12 @@
 import React from 'react';
 import { DayPicker } from 'react-day-picker';
-import { format } from 'date-fns';
 
 const AppointmentBanner = ({selectedDate, setSelectedDate}) => {
 
 
     return (
         <div>
-            <div className="hero py-10 bg-gray-200">
+            <div className="hero py-10 bg-gray-200 rounded-lg">
   <div className="hero-content flex-col lg:flex-row gap-20">
     <DayPicker
         mode='single'
