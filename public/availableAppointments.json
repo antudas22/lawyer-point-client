@@ -1,9 +1,9 @@
 [
     {
         "_id": 1,
-        "name": "Business",
+        "name": "Business Lawyer",
         "image" : "https://www.minhaslawyers.ca/wp-content/uploads/2021/08/Business-Lawyer.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -20,9 +20,9 @@
     },
     {
         "_id": 2,
-        "name": "Bankruptcy",
+        "name": "Bankruptcy Lawyer",
         "image" : "https://www.lawcrossing.com/images/articleimages/What-it-is-Like-to-Practice-Bankruptcy-Law.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -39,9 +39,9 @@
     },
     {
         "_id": 3,
-        "name": "Tax",
+        "name": "Tax Lawyer",
         "image" : "https://blog.ipleaders.in/wp-content/uploads/2019/03/tax-law.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -58,9 +58,9 @@
     },
     {
         "_id": 4,
-        "name": "Defense",
+        "name": "Defense Lawyer",
         "image" : "https://www.thebestcalgary.com/wp-content/uploads/2020/03/Best-Criminal-Defence-Lawyer-in-Calgary.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -77,9 +77,9 @@
     },
     {
         "_id": 5,
-        "name": "Constitutional",
+        "name": "Constitutional Lawyer",
         "image" : "https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/Trump-Impeachment-62-1575481864.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -96,9 +96,9 @@
     },
     {
         "_id": 6,
-        "name": "Family",
+        "name": "Family Lawyer",
         "image" : "https://testmaxprep.s3.amazonaws.com/images/web/blog/blog_image/blog_full_family-law.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -115,9 +115,9 @@
     },
     {
         "_id": 7,
-        "name": "Labor",
+        "name": "Labor Lawyer",
         "image" : "https://www.legalmatch.com/cmswp/images/2008/09/gavel-on-labor-law-document-3.png",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -134,9 +134,9 @@
     },
     {
         "_id": 8,
-        "name": "Estate Planning",
+        "name": "Estate Planning Lawyer",
         "image" : "https://www.mhc-law.com/wp-content/uploads/2021/06/shutterstock_1493445569.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -153,9 +153,9 @@
     },
     {
         "_id": 9,
-        "name": "Immigration",
+        "name": "Immigration Lawyer",
         "image" : "https://gallardolawyers.com/content/img/services/903x530/immigration-lawyer-miami.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",
@@ -172,9 +172,9 @@
     },
     {
         "_id": 10,
-        "name": "Personal Injury",
+        "name": "Personal Injury Lawyer",
         "image" : "https://www.thefloridalawgroup.com/wp-content/uploads/2019/08/personal-injury-case-duration.jpg",
-        "time": [
+        "times": [
             "10.00 AM - 10.30 AM",
             "10.30 AM - 11.00 AM",
             "11.00 AM - 11.30 AM",

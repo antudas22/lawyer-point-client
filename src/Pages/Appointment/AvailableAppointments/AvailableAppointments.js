@@ -1,10 +1,13 @@
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import AppointmentCard from './AppointmentCard';
+import ReservingForm from '../ReservingForm/ReservingForm';
 
 const AvailableAppointments = ({selectedDate}) => {
     
     const [availableAppointments, setAvailableAppointments] = useState([]);
+    const [lawsuit, setLawsuit] = useState(null);
+    console.log(lawsuit);
 
     useEffect( () => {
         fetch('availableAppointments.json')
@@ -21,9 +24,17 @@ const AvailableAppointments = ({selectedDate}) => {
                 availableAppointments.map(appointment => <AppointmentCard
                     key={appointment._id}
                     appointment={appointment}
+                    setLawsuit={setLawsuit}
                 /> )
             }
             </div>
+            {
+                lawsuit &&
+                <ReservingForm
+                lawsuit={lawsuit}
+                setLawsuit={setLawsuit}
+                selectedDate={selectedDate}
+            />}
         </div>
     );
 };
