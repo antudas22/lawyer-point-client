@@ -46,7 +46,7 @@ const Login = () => {
             required: "Password is required!",
             minLength: {value: 8, message: 'Password must be at least 8 characters!'},
         }
-        )} placeholder="Password" className="input input-bordered w-full max-w-sm mt-4" />
+        )} placeholder="Password" className="input input-bordered w-full max-w-sm mt-2" />
         <span onClick={handleToggle} className='absolute right-3 bottom-4 cursor-pointer'><Icon icon={icon} /></span>
         </div>
         {errors.password && <p className='text-error text-end'>{errors.password?.message}</p>}
