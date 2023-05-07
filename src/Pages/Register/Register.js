@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Icon from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
+
+    const {registerUser} = useContext(AuthContext);
 
     const {register, formState: {errors}, handleSubmit} = useForm();
 
@@ -30,7 +34,13 @@ const Register = () => {
       }
 
       const handleRegister = data => {
-        console.log(data)
+        registerUser(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            toast.success('Successfully user registered')
+            console.log(user)
+        })
+        .catch(error => console.error(error))
       }
 
     return (

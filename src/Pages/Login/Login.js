@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Icon from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
+
+    const {loginUser} = useContext(AuthContext);
 
     const {register, formState: {errors}, handleSubmit} = useForm();
     const [loginError, setLoginError] = useState('');
 
     const handleLogin = data => {
-        console.log(data)
+        setLoginError('');
+        loginUser(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => {
+            console.error(error)
+            setLoginError(error.message)
+        })
     }
 
     const [type, setType] = useState('password');
@@ -52,7 +64,7 @@ const Login = () => {
         {errors.password && <p className='text-error text-end'>{errors.password?.message}</p>}
         <div>
             {
-                loginError && <p className='text-error'>{loginError.message}</p>
+                loginError && <p className='text-error'>{loginError}</p>
             }
         </div>
 
