@@ -7,6 +7,7 @@ import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
 
@@ -18,7 +19,14 @@ const Register = () => {
     const [type, setType] = useState('password');
     const [icon, setIcon] = useState(eyeOff);
     const [accepted, setAccepted] = useState(false);
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+
     const navigate = useNavigate();
+
+    if(token){
+        navigate('/');
+    }
 
     const handleToggle = () => {
         if(type === 'password'){
@@ -47,7 +55,7 @@ const Register = () => {
             }
             updateUser(userInfo)
             .then(() => {
-                navigate('/');
+                saveUser(data.name, data.email);
             })
             .catch(error => console.error(error));
         })
@@ -57,6 +65,21 @@ const Register = () => {
         })
       }
 
+      const saveUser = (name, email) => {
+        const user = {name, email};
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            setCreatedUserEmail(email);
+        })
+      }
+      
     return (
         <div className='flex justify-center'>
             <div className='w-full max-w-sm rounded-xl p-4 my-16 shadow-2xl'>
