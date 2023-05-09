@@ -4,15 +4,42 @@ import Icon from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
 
-    const {loginUser} = useContext(AuthContext);
+    const {loginUser, providerLogin} = useContext(AuthContext);
 
     const {register, formState: {errors}, handleSubmit} = useForm();
     const [loginError, setLoginError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
+
+    const facebookProvider = new FacebookAuthProvider();
+
+    const handleFacebookLogin = () => {
+        providerLogin(facebookProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => setLoginError(error.message))
+    }
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleLogin = () => {
+        providerLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => setLoginError(error.message))
+    }
 
     const handleLogin = data => {
         setLoginError('');
@@ -20,6 +47,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user)
+            navigate(from, {replace: true});
         })
         .catch(error => {
             console.error(error)
@@ -75,9 +103,9 @@ const Login = () => {
         <div className='flex justify-around items-center w-full bg-white p-2 rounded-lg'>
             <p className='text-black'>Continue with</p>
         <ul className='flex gap-4'>
-        <li><FaFacebook className='text-[#3b5998] text-3xl cur'/></li>
-        <li><FaGoogle className='text-[#DB4437] text-3xl'/></li>
-        <li><FaTwitter className='text-[#00acee] text-3xl'/></li>
+        <li><button onClick={handleFacebookLogin}><FaFacebook className='text-[#3b5998] text-3xl cur'/></button></li>
+        <li><button onClick={handleGoogleLogin}><FaGoogle className='text-[#DB4437] text-3xl'/></button></li>
+        <li><button><FaTwitter className='text-[#00acee] text-3xl'/></button></li>
       </ul>
         </div>
     </form>

@@ -4,19 +4,21 @@ import Icon from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const Register = () => {
 
-    const {registerUser} = useContext(AuthContext);
+    const {registerUser, updateUser} = useContext(AuthContext);
+    const [registerError, setRegisterError] = useState('');
 
     const {register, formState: {errors}, handleSubmit} = useForm();
 
     const [type, setType] = useState('password');
     const [icon, setIcon] = useState(eyeOff);
     const [accepted, setAccepted] = useState(false);
+    const navigate = useNavigate();
 
     const handleToggle = () => {
         if(type === 'password'){
@@ -34,13 +36,25 @@ const Register = () => {
       }
 
       const handleRegister = data => {
+        setRegisterError('');
         registerUser(data.email, data.password)
         .then(result => {
             const user = result.user;
             toast.success('Successfully user registered')
-            console.log(user)
+            console.log(user);
+            const userInfo = {
+                displayName: data.name
+            }
+            updateUser(userInfo)
+            .then(() => {
+                navigate('/');
+            })
+            .catch(error => console.error(error));
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            console.error(error)
+            setRegisterError(error.message)
+        })
       }
 
     return (
@@ -75,6 +89,12 @@ const Register = () => {
         <span onClick={handleToggle} className='absolute right-3 bottom-4 cursor-pointer'><Icon icon={icon} /></span>
         </div>
         {errors.password && <p className='text-error text-end'>{errors.password?.message}</p>}
+
+        <div>
+            {
+                registerError && <p className='text-error'>{registerError}</p>
+            }
+        </div>
 
         <div className="form-control my-4">
             <div className='flex justify-between'>

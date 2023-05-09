@@ -5,7 +5,13 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+      logOut()
+      .then( () => {})
+      .catch(error => console.error(error))
+  }
 
   const menu = (
     <>
@@ -15,6 +21,12 @@ const Navbar = () => {
       <li>
         <Link to="/appointment">Appointment</Link>
       </li>
+      {
+        user?.uid &&
+        <li>
+        <Link to='/dashboard' >Dashboard</Link>
+      </li>
+      }
       <li>
         <Link to="">About Us</Link>
       </li>
@@ -61,22 +73,13 @@ const Navbar = () => {
                 className="mt-3 p-2 gap-1 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                {
-                        <p className="">{user?.displayName}</p>
-                        ||
-                        <p className="">{user?.email}</p>
-                }
-                </li>
-                <li>
-                  <Link to='' className="justify-between">
-                    Profile
-                  </Link>
+                    <p className="">{user?.displayName}</p>
                 </li>
                 <div className="lg:hidden">
                     <ul className="">{menu}</ul>
                 </div>
                 <li>
-                  <button className="bg-primary text-white">
+                  <button onClick={handleLogout} className="bg-primary text-white">
                     Log out
                   </button>
                 </li>

@@ -1,10 +1,12 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
-const ReservingForm = ({lawsuit, setLawsuit, selectedDate}) => {
+const ReservingForm = ({lawsuit, setLawsuit, selectedDate, refetch}) => {
     const {name, times} = lawsuit;
     const date = format(selectedDate, 'PPPP');
+    const {user} = useContext(AuthContext);
 
     const handleReserve = e => {
       e.preventDefault();
@@ -24,9 +26,25 @@ const ReservingForm = ({lawsuit, setLawsuit, selectedDate}) => {
   
       }
 
-      console.log(reserve);
-      setLawsuit(null);
-      toast.success('Successfully Appointment Reserved.')
+      fetch('http://localhost:5000/reserves', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(reserve)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if(data.acknowledged){
+          setLawsuit(null);
+        toast(`You have reserved an appointment on ${date}.`)
+        refetch()
+        }
+        else{
+          toast.error(data.message)
+        }
+      })
     }
 
   return (
@@ -53,9 +71,9 @@ const ReservingForm = ({lawsuit, setLawsuit, selectedDate}) => {
                 >{time}</option>)
               }
             </select>
-            <input name='clientName' type="text" placeholder="Full Name" className="input input-bordered w-full max-w-md" required/>
+            <input name='clientName' type="text" placeholder="Full Name" defaultValue={user?.displayName} className="input input-bordered w-full max-w-md" required/>
             <input name="number" type="text" placeholder="Contact Number" className="input input-bordered w-full max-w-md" required/>
-            <input name="email" type="email" placeholder="Email Address" className="input input-bordered w-full max-w-md" required/>
+            <input name="email" type="email" placeholder="Email Address" defaultValue={user?.email} className="input input-bordered w-full max-w-md" required/>
             <input type="submit" value="Submit" className="btn btn-primary w-full max-w-md mt-4" />
           </form>
         </div>
