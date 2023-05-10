@@ -7,6 +7,9 @@ import Appointment from "../Pages/Appointment/Appointment";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
 import MyAppointment from "../Pages/Dashboard/MyAppointment/MyAppointment";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AdminRoute from "./AdminRoute";
+import AddLawyer from "../Pages/Dashboard/AddLawyer/AddLawyer";
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +41,14 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyAppointment/>
+            },
+            {
+                path: '/dashboard/users',
+                element: <AdminRoute><AllUsers/></AdminRoute>
+            },
+            {
+                path: '/dashboard/addlawyer',
+                element: <AdminRoute><AddLawyer/></AdminRoute>
             }
         ]
     }
