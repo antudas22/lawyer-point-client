@@ -129,15 +129,6 @@ const Register = () => {
         
       <input className='btn btn-primary text-white w-full mt-2' type="submit" value='Register' disabled={!accepted}/>
       <p className='text-center mt-4'>Already have an account? <Link to='/login' className='text-primary'>Login.</Link></p>
-      <div className="divider">or</div>
-        <div className='flex justify-around items-center w-full bg-white p-2 rounded-lg'>
-            <p className='text-black'>Continue with</p>
-        <ul className='flex gap-4'>
-        <li><FaFacebook className='text-[#3b5998] text-3xl cur'/></li>
-        <li><FaGoogle className='text-[#DB4437] text-3xl'/></li>
-        <li><FaTwitter className='text-[#00acee] text-3xl'/></li>
-      </ul>
-        </div>
     </form>
         </div>
         </div>
