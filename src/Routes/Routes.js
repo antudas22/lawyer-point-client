@@ -10,6 +10,7 @@ import MyAppointment from "../Pages/Dashboard/MyAppointment/MyAppointment";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddLawyer from "../Pages/Dashboard/AddLawyer/AddLawyer";
+import ManageLawyers from "../Pages/Dashboard/ManageLawyers/ManageLawyers";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/addlawyer',
                 element: <AdminRoute><AddLawyer/></AdminRoute>
+            },
+            {
+                path: '/dashboard/managelawyers',
+                element: <AdminRoute><ManageLawyers/></AdminRoute>
             }
         ]
     }

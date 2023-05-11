@@ -2,9 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
 import Loading from "../../Shared/Loading/Loading";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddLawyer = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm()
+
+  const navigate = useNavigate();
+
+  const imgHostKey = process.env.REACT_APP_imgbb_key;
 
   const {data: specialists, isLoading} = useQuery({
     queryKey: ['specialist'],
@@ -20,7 +26,42 @@ const AddLawyer = () => {
   }
 
   const handleAddLawyer = (data) => {
-      console.log(data)
+    console.log(imgHostKey)
+      const image = data.image[0];
+      const formData = new FormData();
+      formData.append('image', image);
+      const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`
+      fetch(url, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(imageData => {
+        if(imageData.success){
+          const lawyer ={
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            specialist: data.specialist,
+            image: imageData.data.url
+          }
+
+          fetch('http://localhost:5000/lawyers', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(lawyer)
+          })
+          .then(res => res.json())
+          .then(result => {
+            console.log(result);
+            toast.success(`${data.name} successfully added`);
+            navigate('/dashboard/managelawyers')
+          })
+        }
+      })
   }
 
   return (
@@ -56,7 +97,9 @@ const AddLawyer = () => {
           </div>
           
           <div className="form-control w-full max-w-lg">
-          <select className="select select-bordered w-full max-w-lg mt-2">
+          <select
+          {...register("specialist", { required: true })}
+          className="select select-bordered w-full max-w-lg mt-2">
             <option disabled selected>Specialist In</option>
             {
               specialists.map(specialist => <option key={specialist._id}>{specialist.name}</option>)
@@ -67,7 +110,7 @@ const AddLawyer = () => {
           <div className="form-control w-full max-w-lg">
             <input
               type="file"
-              {...register("file", { required: true })}
+              {...register("image", { required: true })}
               className="file-input file-input-bordered w-full max-w-lg mt-2"
             />
           </div>

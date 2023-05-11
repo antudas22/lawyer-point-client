@@ -5,7 +5,7 @@ import Loading from '../../Shared/Loading/Loading';
 
 const MyAppointment = () => {
 
-    const {user} = useContext(AuthContext);
+    const {user, logOut} = useContext(AuthContext);
 
     const url = `http://localhost:5000/reserves?email=${user?.email}`;
 
@@ -17,6 +17,9 @@ const MyAppointment = () => {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             });
+            if(res.status === 401 || res.status === 403){
+              return logOut();
+            }
             const data = await res.json();
             return data;
         }
@@ -43,8 +46,8 @@ const MyAppointment = () => {
     <tbody>
 
         {
-            reserves &&
-            reserves.map((reserve, i) => <tr key={reserve._id} className="hover">
+          reserves &&
+            reserves?.map((reserve, i) => <tr key={reserve._id} className="hover">
             <th>{i+1}</th>
             <td>{reserve.client}</td>
             <td>{reserve.lawsuit}</td>

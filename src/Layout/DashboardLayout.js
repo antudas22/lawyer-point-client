@@ -22,15 +22,16 @@ const DashboardLayout = () => {
             </div>
             
             </div> 
-            <div className="drawer-side">
+            <div className="drawer-side bg-base-100">
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> 
-                <ul className="menu p-4 w-80 bg-base-200 text-base-content gap-1">
+                <ul className="menu p-4 w-80 text-base-content md:bg-base-100 bg-base-100 lg:bg-none gap-1">
                 
                 <li className='bg-primary rounded-full text-white'><Link to='/dashboard'>My Appointments</Link></li>
                 {
                     isAdmin && <>
                         <li className='bg-primary rounded-full text-white'><Link to='/dashboard/users'>All Users</Link></li>
                         <li className='bg-primary rounded-full text-white'><Link to='/dashboard/addlawyer'>Add A Lawyer</Link></li>
+                        <li className='bg-primary rounded-full text-white'><Link to='/dashboard/managelawyers'>Manage Lawyers</Link></li>
                     </>
                 }
                 </ul>
