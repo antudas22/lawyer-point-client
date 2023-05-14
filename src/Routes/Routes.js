@@ -11,11 +11,14 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddLawyer from "../Pages/Dashboard/AddLawyer/AddLawyer";
 import ManageLawyers from "../Pages/Dashboard/ManageLawyers/ManageLawyers";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main/>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/',
@@ -38,6 +41,7 @@ export const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/dashboard',
@@ -54,6 +58,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/managelawyers',
                 element: <AdminRoute><ManageLawyers/></AdminRoute>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment/>,
+                loader: ({params}) => fetch(`http://localhost:5000/reserves/${params.id}`)
             }
         ]
     }

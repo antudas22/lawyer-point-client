@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const ReservingForm = ({lawsuit, setLawsuit, selectedDate, refetch}) => {
-    const {name, times} = lawsuit;
+    const {name, times, fee} = lawsuit;
     const date = format(selectedDate, 'PPPP');
     const {user} = useContext(AuthContext);
 
@@ -22,7 +22,8 @@ const ReservingForm = ({lawsuit, setLawsuit, selectedDate, refetch}) => {
         client: clientName,
         time,
         email,
-        number
+        number,
+        fee
   
       }
 
