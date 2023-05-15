@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import { Link } from "react-router-dom";
 
 const ReservingForm = ({lawsuit, setLawsuit, selectedDate, refetch}) => {
     const {name, times, fee} = lawsuit;
@@ -75,7 +76,12 @@ const ReservingForm = ({lawsuit, setLawsuit, selectedDate, refetch}) => {
             <input name='clientName' type="text" placeholder="Full Name" defaultValue={user?.displayName} className="input input-bordered w-full max-w-md" required/>
             <input name="number" type="text" placeholder="Contact Number" className="input input-bordered w-full max-w-md" required/>
             <input name="email" type="email" placeholder="Email Address" defaultValue={user?.email} className="input input-bordered w-full max-w-md" required/>
-            <input type="submit" value="Submit" className="btn btn-primary w-full max-w-md mt-4" />
+            {
+              user?.uid ?
+              <input type="submit" value="Submit" className="btn btn-primary w-full max-w-md mt-4" />
+              :
+              <Link to='/login' className="btn btn-primary w-full max-w-md mt-4">Login Please</Link>
+            }
           </form>
         </div>
       </div>

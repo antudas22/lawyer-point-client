@@ -32,6 +32,7 @@ const DashboardLayout = () => {
                         <li className='bg-primary rounded-full text-white'><Link to='/dashboard/users'>All Users</Link></li>
                         <li className='bg-primary rounded-full text-white'><Link to='/dashboard/addlawyer'>Add A Lawyer</Link></li>
                         <li className='bg-primary rounded-full text-white'><Link to='/dashboard/managelawyers'>Manage Lawyers</Link></li>
+                        <li className='bg-primary rounded-full text-white'><Link to='/dashboard/completedpayments'>Completed Payments</Link></li>
                     </>
                 }
                 </ul>

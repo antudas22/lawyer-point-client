@@ -1,14 +1,16 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({reserve}) => {
 
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
-    const [success, setSuccess] = useState("");
 
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate();
 
     const {_id, client, email, fee, lawsuit, appointmentDate, time} = reserve;
 
@@ -51,7 +53,6 @@ const CheckoutForm = ({reserve}) => {
         else{
             setCardError('');
         }
-        setSuccess('');
         const {paymentIntent, error: confirmCardError} = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -78,8 +79,7 @@ const CheckoutForm = ({reserve}) => {
                 paymentMethod: paymentIntent.payment_method,
                 appointmentDate,
                 time,
-                fee,
-                successMessage: success
+                fee
             }
             fetch("http://localhost:5000/payments", {
                 method: 'POST', 
@@ -93,8 +93,9 @@ const CheckoutForm = ({reserve}) => {
             .then(data => {
                 console.log(data)
                 if(data.insertedId){
-                    setSuccess('Your payment has been verified.Thank You.')
+                    toast.success('Your payment has been verified. Thank You.')
                 }
+                navigate('/dashboard/completedpayments')
             })
         }
     }

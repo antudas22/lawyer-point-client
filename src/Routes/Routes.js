@@ -13,6 +13,7 @@ import AddLawyer from "../Pages/Dashboard/AddLawyer/AddLawyer";
 import ManageLawyers from "../Pages/Dashboard/ManageLawyers/ManageLawyers";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
+import CompletedPayments from "../Pages/Dashboard/CompletedPayments/CompletedPayments";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/managelawyers',
                 element: <AdminRoute><ManageLawyers/></AdminRoute>
+            },
+            {
+                path: '/dashboard/completedpayments',
+                element: <CompletedPayments/>
             },
             {
                 path: '/dashboard/payment/:id',

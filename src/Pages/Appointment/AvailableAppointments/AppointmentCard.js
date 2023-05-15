@@ -13,7 +13,7 @@ const AppointmentCard = ({appointment, setLawsuit}) => {
     <p>{times.length} {times.length < 2 ? 'space' : 'spaces'} available right now.</p>
     </div>
     <div className="card-actions justify-between items-center">
-      <h4 className='text-lg font-bold text-info'>Consultancy Fee: ${fee}</h4>
+      <h4 className='text-lg text-info'>Consultancy Fee: ${fee}</h4>
       <label onClick={() => setLawsuit(appointment)} htmlFor="reserving-form" className="btn btn-primary text-white" disabled={times.length === 0}>Reserve Now</label>
     </div>
   </div>
