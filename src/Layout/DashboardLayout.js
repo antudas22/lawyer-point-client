@@ -24,7 +24,7 @@ const DashboardLayout = () => {
             </div> 
             <div className="drawer-side bg-base-100">
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> 
-                <ul className="menu p-4 w-80 text-base-content md:bg-base-100 bg-base-100 lg:bg-none gap-1">
+                <ul className="menu p-4 w-80 text-base-content gap-1">
                 
                 <li className='bg-primary rounded-full text-white'><Link to='/dashboard'>My Appointments</Link></li>
                 {
@@ -36,7 +36,6 @@ const DashboardLayout = () => {
                     </>
                 }
                 </ul>
-            
             </div>
             </div>
             

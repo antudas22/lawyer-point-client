@@ -43,7 +43,8 @@ const AddLawyer = () => {
             email: data.email,
             phone: data.phone,
             specialist: data.specialist,
-            image: imageData.data.url
+            image: imageData.data.url,
+            details: data.details
           }
 
           fetch('http://localhost:5000/lawyers', {

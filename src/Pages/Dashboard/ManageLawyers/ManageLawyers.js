@@ -19,7 +19,7 @@ const ManageLawyers = () => {
         queryKey: ['lawyers'],
         queryFn: async () => {
             try{
-                const res = await fetch('http://localhost:5000/lawyers', {
+                const res = await fetch('http://localhost:5000/manageLawyers', {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -50,10 +50,9 @@ const ManageLawyers = () => {
             res.json()
         })
         .then(data => {
-            if(data.deletedCount > 0){
+            console.log(data)
                 refetch();
                 toast.success(`Successfully removed ${lawyer.name}`)
-            }
         })
     }
 

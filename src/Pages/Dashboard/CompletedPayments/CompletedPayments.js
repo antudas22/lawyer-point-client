@@ -35,7 +35,7 @@ const CompletedPayments = () => {
             <h3 className='text-2xl text-center mb-4'>Completed Payments</h3>
             {
                 completedpayments.map(completedpayment => <div
-                key={completedpayment._id} className='relative flex flex-col gap-3 w-full max-w-lg mx-auto rounded-xl p-8 shadow-xl my-8'>
+                key={completedpayment._id} className='relative flex flex-col gap-3 w-full max-w-lg mx-auto rounded-xl p-8 shadow-xl mb-10'>
                 <h3 className='text-2xl'>Lawsuit: {completedpayment.lawsuit}</h3>
                 <p className='font-bold'>Client Name: {completedpayment.client}</p>
                 <p className='font-bold'>Client Email: {completedpayment.email}</p>
