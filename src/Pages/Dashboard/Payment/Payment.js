@@ -16,7 +16,7 @@ const Payment = () => {
         return <Loading/>
     }
     return (
-        <div className='p-2'>
+        <div className='p-5 lg:p-2'>
             <h3 className='text-2xl text-center mb-4'>Payment</h3>
             <div className='flex flex-col gap-3 w-full max-w-lg mx-auto rounded-xl p-8 shadow-2xl'>
                 <h3 className='text-2xl'>Lawsuit: {lawsuit}</h3>

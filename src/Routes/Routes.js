@@ -15,6 +15,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
 import CompletedPayments from "../Pages/Dashboard/CompletedPayments/CompletedPayments";
 import AllLawyers from "../Pages/AllLawyers/AllLawyers";
+import Profile from "../Pages/Profile/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
             {
                 path: '/alllawyers',
                 element: <AllLawyers/>
+            },
+            {
+                path: '/profile',
+                element: <Profile/>
             }
         ]
     },    

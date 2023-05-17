@@ -66,7 +66,7 @@ const AddLawyer = () => {
   }
 
   return (
-    <div className="p-2">
+    <div className="p-5 lg:p-2">
       <h3 className="text-2xl text-center mb-4">Add A Lawyer</h3>
       <div className="w-full mx-auto py-10 max-w-lg rounded-xl p-4 my-10 shadow-2xl">
         <form onSubmit={handleSubmit(handleAddLawyer)}>

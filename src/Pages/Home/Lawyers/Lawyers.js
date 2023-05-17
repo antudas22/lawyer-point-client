@@ -15,9 +15,9 @@ const Lawyers = () => {
 
   return (
     <div className="relative">
-      <h2 className="text-3xl font-bold text-center my-14">Meet Our Lawyers</h2>
+      <h2 className="text-3xl font-bold text-center my-10 lg:my-14">Meet Our Lawyers</h2>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 p-5'>
       {
         lawyers?.map(lawyer => <LawyersCard
           key={lawyer._id}
@@ -26,7 +26,7 @@ const Lawyers = () => {
       }
       </div>
       
-      <div className="flex justify-center mt-14">
+      <div className="flex justify-center mt-10 lg:mt-14">
         <Link to='/alllawyers' className="btn btn-primary text-white">View All Lawyers</Link>
       </div>
 

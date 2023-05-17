@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import Icon from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
-import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
@@ -11,7 +10,7 @@ import useToken from '../../hooks/useToken';
 
 const Register = () => {
 
-    const {registerUser, updateUser} = useContext(AuthContext);
+    const {registerUser, updateUser, user} = useContext(AuthContext);
     const [registerError, setRegisterError] = useState('');
 
     const {register, formState: {errors}, handleSubmit} = useForm();
@@ -82,8 +81,12 @@ const Register = () => {
       }
       
     return (
-        <div className='flex justify-center'>
-            <div className='w-full max-w-sm rounded-xl p-4 my-16 shadow-2xl'>
+        <div className='flex justify-center p-5'>
+            {
+                user?.uid ?
+                <p className="my-44">You are logged in.</p>
+                :
+                <div className='w-full max-w-sm rounded-xl p-4 my-5 md:my-10 lg:my-16 shadow-2xl'>
             <h2 className='text-4xl text-center mt-5 mb-10'>Register</h2>
         <form onSubmit={handleSubmit(handleRegister)} >
 
@@ -131,6 +134,7 @@ const Register = () => {
       <p className='text-center mt-4'>Already have an account? <Link to='/login' className='text-primary'>Login.</Link></p>
     </form>
         </div>
+            }
         </div>
     );
 };

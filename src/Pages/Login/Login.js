@@ -11,7 +11,7 @@ import useToken from "../../hooks/useToken";
 
 const Login = () => {
 
-    const {loginUser, providerLogin} = useContext(AuthContext);
+    const {loginUser, providerLogin, user} = useContext(AuthContext);
 
     const {register, formState: {errors}, handleSubmit} = useForm();
     const [loginError, setLoginError] = useState('');
@@ -95,8 +95,12 @@ const Login = () => {
     }
 
   return (
-    <div className='flex justify-center'>
-            <div className='w-full max-w-sm rounded-xl p-4 my-16 shadow-2xl'>
+    <div className='flex justify-center p-5'>
+            {
+                user?.uid ?
+                <p className="my-44">You are logged in.</p>
+                :
+                <div className='w-full max-w-sm rounded-xl p-4 my-5 md:my-10 lg:my-16 shadow-2xl'>
             <h2 className='text-4xl text-center mt-5 mb-10'>Login</h2>
         <form onSubmit={handleSubmit(handleLogin)} >
         <div className="form-control w-full max-w-sm">
@@ -135,6 +139,7 @@ const Login = () => {
         </div>
     </form>
         </div>
+            }
         </div>
   );
 };

@@ -6,7 +6,8 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Shared/Loading/Loading';
 
 const AvailableAppointments = ({selectedDate}) => {
-    
+
+
     const [lawsuit, setLawsuit] = useState(null);
 
     const date = format(selectedDate, 'PPPP');
@@ -28,7 +29,7 @@ const AvailableAppointments = ({selectedDate}) => {
         <div>
             <p className='text-center my-10'>Available appointments on {date}</p>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-5'>
             {
                 availableAppointments.map(appointment => <AppointmentCard
                     key={appointment._id}

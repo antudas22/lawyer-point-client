@@ -5,7 +5,7 @@ const AppointmentBanner = ({selectedDate, setSelectedDate}) => {
     return (
         <div>
             <div className="hero py-10 bg-gray-200 rounded-lg">
-  <div className="hero-content flex-col lg:flex-row gap-20">
+  <div className="hero-content flex-col lg:flex-row gap-5 md:gap-10 lg:gap-20">
     <DayPicker
         mode="single"
         selected={selectedDate}
@@ -14,8 +14,8 @@ const AppointmentBanner = ({selectedDate, setSelectedDate}) => {
         className='shadow-2xl p-5 rounded-lg'
 
     />
-    <div className='w-1/2'>
-      <h1 className="text-5xl font-bold">Pick a date</h1>
+    <div className='w-1/2 text-center lg:text-start'>
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">Pick a date</h1>
       <p className="py-6">For Discussion please pick a date and book an appointment to hire a professional lawyer.</p>
     </div>
   </div>

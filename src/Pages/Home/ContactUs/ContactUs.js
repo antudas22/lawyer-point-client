@@ -23,7 +23,7 @@ const ContactUs = () => {
         <div>
              <div className='mb-0'>
             <div className='flex justify-center'>
-            <h2 className="text-3xl font-bold text-center my-10">Get in touch</h2>
+            <h2 className="text-3xl font-bold text-center md:my-5 lg:my-10">Get in touch</h2>
                 </div>
             <div className='flex justify-center p-10'>
             <form onSubmit={sendEmail} className="card flex-shrink-0 w-full max-w-lg shadow-2xl">

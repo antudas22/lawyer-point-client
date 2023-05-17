@@ -31,7 +31,7 @@ const CompletedPayments = () => {
         return <Loading/>
     }
     return (
-        <div className='p-2'>
+        <div className='p-5 lg:p-2'>
             <h3 className='text-2xl text-center mb-4'>Completed Payments</h3>
             {
                 completedpayments.map(completedpayment => <div

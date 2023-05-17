@@ -3,14 +3,14 @@ import { ImLocation } from "react-icons/im";
 
 const Testimonial = () => {
   return (
-    <div>
-      <h2 className="text-3xl font-bold text-center my-14">Our Client Says</h2>
+    <div className="hidden md:block lg:block">
+      <h2 className="text-3xl font-bold text-center my-10 lg:my-14">Our Client Says</h2>
 
       <div className="">
 
       <div className="carousel w-full">
   <div id="slide1" className="carousel-item justify-center gap-5 relative w-full py-6">
-    <div className="w-[500px] p-6 shadow-xl rounded-lg">
+    <div className="w-[200px] md:w-[320px] lg:w-[500px] p-6 shadow-xl rounded-lg">
         <div className="flex items-center gap-5">
           <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -30,7 +30,7 @@ const Testimonial = () => {
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, earum neque explicabo eum quas quam ut placeat architecto laudantium blanditiis modi nesciunt quo omnis reprehenderit et necessitatibus facilis quae sint.</p>
         </div>
       </div>
-      <div className="w-[500px] p-6 shadow-xl rounded-lg">
+      <div className="w-[200px] md:w-[320px] lg:w-[500px] p-6 shadow-xl rounded-lg">
         <div className="flex items-center gap-5">
           <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -56,7 +56,7 @@ const Testimonial = () => {
     </div>
   </div> 
   <div id="slide2" className="carousel-item justify-center gap-5 relative w-full py-6">
-  <div className="w-[500px] p-6 shadow-xl rounded-lg">
+  <div className="w-[200px] md:w-[320px] lg:w-[500px] p-6 shadow-xl rounded-lg">
         <div className="flex items-center gap-5">
           <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -76,7 +76,7 @@ const Testimonial = () => {
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, earum neque explicabo eum quas quam ut placeat architecto laudantium blanditiis modi nesciunt quo omnis reprehenderit et necessitatibus facilis quae sint.</p>
         </div>
       </div>
-      <div className="w-[500px] p-6 shadow-xl rounded-lg">
+      <div className="w-[200px] md:w-[320px] lg:w-[500px] p-6 shadow-xl rounded-lg">
         <div className="flex items-center gap-5">
           <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
