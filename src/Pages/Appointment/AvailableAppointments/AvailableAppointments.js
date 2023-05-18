@@ -15,7 +15,7 @@ const AvailableAppointments = ({selectedDate}) => {
     const {data:availableAppointments = [], refetch, isLoading} = useQuery({
         queryKey: ['availableAppointments', date],
         queryFn: async() => {
-            const res = await fetch(`http://localhost:5000/availableAppointments?date=${date}`);
+            const res = await fetch(`https://lawyer-point-server.vercel.app/availableAppointments?date=${date}`);
             const data = await res.json();
             return data;
         }

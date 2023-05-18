@@ -3,13 +3,16 @@ import { useForm } from "react-hook-form";
 import Icon from 'react-icons-kit';
 import {eye} from 'react-icons-kit/feather/eye';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
-import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-import { FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import useToken from "../../hooks/useToken";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+
+    useTitle('Login')
 
     const {loginUser, providerLogin, user} = useContext(AuthContext);
 
@@ -33,9 +36,12 @@ const Login = () => {
         providerLogin(facebookProvider)
         .then(result => {
             const user = result.user;
+            saveUser(user.displayName, user.email)
             console.log(user);
         })
-        .catch(error => setLoginError(error.message))
+        .catch(error => {
+            console.error(error)
+            setLoginError(error.message)})
     }
 
     const googleProvider = new GoogleAuthProvider();
@@ -50,9 +56,20 @@ const Login = () => {
         .catch(error => setLoginError(error.message))
     }
 
+    const githubProvider = new GithubAuthProvider();
+
+    const handleGithubLogin = () => {
+        providerLogin(githubProvider)
+        .then(result => {
+            const user = result.user;
+            saveUser(user.displayName, user.email)
+        })
+        .catch(error => setLoginError(error.message))
+    }
+
     const saveUser = (name, email) => {
         const user = {name, email};
-        fetch('http://localhost:5000/users', {
+        fetch('https://lawyer-point-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -125,7 +142,7 @@ const Login = () => {
             }
         </div>
 
-        <p className='my-3 '>Forget Password?</p>
+        <Link to='/forgetpass'><p className='my-3'>Forget Password?</p></Link>
       <input className='btn btn-success text-white w-full mt-2' type="submit" value='Login' />
       <p className='text-center mt-4'>New to Lawyer Point? <Link to='/register' className='text-primary'>Create a new account.</Link></p>
       <div className="divider">or</div>
@@ -134,7 +151,7 @@ const Login = () => {
         <ul className='flex gap-4'>
         <li><button onClick={handleFacebookLogin}><FaFacebook className='text-[#3b5998] text-3xl cur'/></button></li>
         <li><button onClick={handleGoogleLogin}><FaGoogle className='text-[#DB4437] text-3xl'/></button></li>
-        <li><button><FaTwitter className='text-[#00acee] text-3xl'/></button></li>
+        <li><button onClick={handleGithubLogin}><FaGithub className='text-[#171515] text-3xl rounded-full'/></button></li>
       </ul>
         </div>
     </form>

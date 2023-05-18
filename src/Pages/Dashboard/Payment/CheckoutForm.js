@@ -7,6 +7,7 @@ const CheckoutForm = ({reserve}) => {
 
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
+    const [processing, setProcessing] = useState(false);
 
     const stripe = useStripe();
     const elements = useElements();
@@ -16,7 +17,7 @@ const CheckoutForm = ({reserve}) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://lawyer-point-server.vercel.app/create-payment-intent", {
           method: "POST",
           headers: { 
             "Content-Type": "application/json",
@@ -53,11 +54,12 @@ const CheckoutForm = ({reserve}) => {
         else{
             setCardError('');
         }
+        setProcessing(true);
         const {paymentIntent, error: confirmCardError} = await stripe.confirmCardPayment(
             clientSecret,
             {
               payment_method: {
-                card,
+                card: card,
                 billing_details: {
                   name: client,
                   email: email
@@ -81,7 +83,7 @@ const CheckoutForm = ({reserve}) => {
                 time,
                 fee
             }
-            fetch("http://localhost:5000/payments", {
+            fetch("https://lawyer-point-server.vercel.app/payments", {
                 method: 'POST', 
                 headers: {
                     'content-type': 'application/json',
@@ -98,6 +100,7 @@ const CheckoutForm = ({reserve}) => {
                 navigate('/dashboard/completedpayments')
             })
         }
+        setProcessing(false);
     }
     return (
         <div>
@@ -120,7 +123,7 @@ const CheckoutForm = ({reserve}) => {
             />
             <p className='text-error mt-2'>{cardError}</p>
             <div className='flex w-full justify-end'>
-                <button className='btn btn-primary w-28 text-white mt-4' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn btn-primary w-28 text-white mt-4' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </div>

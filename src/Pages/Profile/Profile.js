@@ -1,7 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Profile = () => {
+
+    useTitle('Profile')
+
     const {user} = useContext(AuthContext);
     return (
         <div className='w-full'>

@@ -28,7 +28,7 @@ const ReservingForm = ({lawsuit, setLawsuit, selectedDate, refetch}) => {
   
       }
 
-      fetch('http://localhost:5000/reserves', {
+      fetch('https://lawyer-point-server.vercel.app/reserves', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

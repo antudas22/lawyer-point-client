@@ -3,8 +3,11 @@ import Navbar from '../Pages/Shared/Navbar/Navbar';
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
 import { AuthContext } from '../contexts/AuthProvider';
+import useTitle from '../hooks/useTitle';
 
 const DashboardLayout = () => {
+
+    useTitle('Dashboard')
 
     const {user} = useContext(AuthContext);
  

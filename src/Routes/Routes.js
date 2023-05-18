@@ -16,6 +16,8 @@ import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
 import CompletedPayments from "../Pages/Dashboard/CompletedPayments/CompletedPayments";
 import AllLawyers from "../Pages/AllLawyers/AllLawyers";
 import Profile from "../Pages/Profile/Profile";
+import ForgetPassForm from "../Pages/Login/ForgetPassForm";
+import Blog from "../Pages/Blog/Blog";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +48,14 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <Profile/>
+            },
+            {
+                path: '/forgetpass',
+                element: <ForgetPassForm/>
+            },
+            {
+                path: '/blog',
+                element: <Blog/>
             }
         ]
     },    
@@ -77,7 +87,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment/>,
-                loader: ({params}) => fetch(`http://localhost:5000/reserves/${params.id}`)
+                loader: ({params}) => fetch(`https://lawyer-point-server.vercel.app/reserves/${params.id}`)
             }
         ]
     }

@@ -8,7 +8,7 @@ const AllUsers = () => {
     const {data: users = [], refetch, isLoading} = useQuery({
         queryKey: ['users'],
         queryFn: async() => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://lawyer-point-server.vercel.app/users');
             const data = await res.json();
             return data;
         }
@@ -21,7 +21,7 @@ const AllUsers = () => {
     const handleMakeAdmin = user => {
       const alert = window.confirm('Are you sure you want to change this user role.')
       if(alert){
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://lawyer-point-server.vercel.app/users/admin/${user._id}`, {
         method: 'PUT',
         headers: {
           authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -40,7 +40,7 @@ const AllUsers = () => {
     const handleMakeUser = user => {
       const alert = window.confirm('Are you sure you want to change this user role.')
       if(alert){
-      fetch(`http://localhost:5000/users/user/${user._id}`, {
+      fetch(`https://lawyer-point-server.vercel.app/users/user/${user._id}`, {
         method: 'PUT',
         headers: {
           authorization: `bearer ${localStorage.getItem('accessToken')}`

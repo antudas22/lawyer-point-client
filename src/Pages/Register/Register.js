@@ -7,10 +7,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import useToken from '../../hooks/useToken';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
 
-    const {registerUser, updateUser, user} = useContext(AuthContext);
+    useTitle('Register')
+
+    const {registerUser, verifyEmail, updateUser, user} = useContext(AuthContext);
     const [registerError, setRegisterError] = useState('');
 
     const {register, formState: {errors}, handleSubmit} = useForm();
@@ -49,6 +52,8 @@ const Register = () => {
             const user = result.user;
             toast.success('Successfully user registered')
             console.log(user);
+            handleEmailVerification();
+            toast.success('Great. Please check your email inbox or spam folder to get email verification link.',{duration: 10000,})
             const userInfo = {
                 displayName: data.name
             }
@@ -64,9 +69,15 @@ const Register = () => {
         })
       }
 
+      const handleEmailVerification = () => {
+        verifyEmail()
+        .then(() => {})
+        .catch(error => console.error(error));
+      }
+
       const saveUser = (name, email) => {
         const user = {name, email};
-        fetch('http://localhost:5000/users', {
+        fetch('https://lawyer-point-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

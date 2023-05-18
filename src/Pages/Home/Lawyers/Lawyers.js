@@ -7,7 +7,7 @@ const Lawyers = () => {
   const [lawyers, setLawyers] = useState();
 
   useEffect( () => {
-    fetch('http://localhost:5000/ourLawyers')
+    fetch('https://lawyer-point-server.vercel.app/ourLawyers')
   .then(res => res.json())
   .then(data => setLawyers(data))
   }, [])

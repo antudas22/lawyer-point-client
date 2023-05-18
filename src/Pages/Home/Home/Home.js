@@ -6,8 +6,10 @@ import Testimonial from '../Testimonial/Testimonial';
 import ContactUs from '../ContactUs/ContactUs';
 import Location from '../Location/Location';
 import Reputation from '../Reputation/Reputation';
+import useTitle from '../../../hooks/useTitle';
 
 const Home = () => {
+    useTitle('Home')
     return (
         <div>
             <Banner/>

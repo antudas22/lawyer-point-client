@@ -15,7 +15,7 @@ const AddLawyer = () => {
   const {data: specialists, isLoading} = useQuery({
     queryKey: ['specialist'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/specialistIn');
+      const res = await fetch('https://lawyer-point-server.vercel.app/specialistIn');
       const data = await res.json();
       return data;
     }
@@ -47,7 +47,7 @@ const AddLawyer = () => {
             details: data.details
           }
 
-          fetch('http://localhost:5000/lawyers', {
+          fetch('https://lawyer-point-server.vercel.app/lawyers', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import LawyersCard from "../Home/Lawyers/LawyersCard";
+import useTitle from "../../hooks/useTitle";
 
 const AllLawyers = () => {
+
+  useTitle('All Lawyers')
 
   const [lawyers, setLawyers] = useState();
 
   useEffect( () => {
-    fetch('http://localhost:5000/allLawyers')
+    fetch('https://lawyer-point-server.vercel.app/allLawyers')
   .then(res => res.json())
   .then(data => setLawyers(data))
   }, [])
