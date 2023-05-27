@@ -8,7 +8,7 @@ const CompletedPayments = () => {
 
     
 
-    const {user, logOut} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
  
     const url = `https://lawyer-point-server.vercel.app/completedPayments?email=${user?.email}`
 
@@ -20,9 +20,6 @@ const CompletedPayments = () => {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             });
-            if(res.status === 401 || res.status === 403){
-              return logOut();
-            }
             const data = await res.json();
             return data;
         }

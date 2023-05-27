@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const MyAppointment = () => {
 
-    const {user, logOut} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
 
     const url = `https://lawyer-point-server.vercel.app/reserves?email=${user?.email}`;
 
@@ -18,9 +18,6 @@ const MyAppointment = () => {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             });
-            if(res.status === 401 || res.status === 403){
-              return logOut();
-            }
             const data = await res.json();
             return data;
         }
