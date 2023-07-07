@@ -8,6 +8,10 @@
 
 Technologies: React JS, Tailwind CSS, daisyUI, React Router Dom, Firebase, Map JS, Email JS, Stripe JS, Tanstack Query, Countup, Day Picker, React Hook Form, React Hot Toast, React Icons, Scroll Trigger, React To Print, Node JS, MongoDB, JWT, Nodemailer.
 
+Admin Access:
+email: antu6781@gmail.com
+pass: Antu12345
+
 Open [Github - Server](https://github.com/antudas22/lawyer-point-server)
 Open [Live Website](https://lawyer-point-6b2ec.web.app/)
 
